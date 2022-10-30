@@ -1,10 +1,7 @@
 import streamlit as st
-import plotly.figure_factory as ff
-import plotly.graph_objects as go
 import plotly
 import ujson
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import glob
 import time
