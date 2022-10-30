@@ -24,7 +24,7 @@ def load_jsons(ids):
             point_dfs.append(json_loaded["point"])
             club_data.append(list(json_loaded["stay"].values()))
     
-    point_dataframe = pd.DataFrame(data=dict(id=[i[41:].replace(".json","") for i in ids], point=point_dfs))
+    point_dataframe = pd.DataFrame(data=dict(id=[i[-11:].replace(".json","") for i in ids], point=point_dfs))
     club_data = collections.Counter(itertools.chain.from_iterable(club_data))
     club_data = pd.DataFrame(data=dict(name=list(club_data.keys()), counts=list(club_data.values())))
     club_data.drop(0,inplace=True)
@@ -41,8 +41,8 @@ def load_data(id_selected):
     df_history["time"] = df_history["time"].apply(lambda x: dt.strptime("2021/"+x, r"%Y/%m/%d %H:%M:%S"))
     return df_history
 
-id_list = glob.glob(r"C:\Users\ThinkPad\Desktop\user_data\2021\*.json")
-id_list_names = [i[41:].replace(".json","") for i in id_list]
+id_list = glob.glob(r"\2021\*.json")
+id_list_names = [i[-11:].replace(".json","") for i in id_list]
 
 st.sidebar.write("### ID")
 id_selected = st.sidebar.selectbox(' ', id_list_names)
@@ -55,8 +55,7 @@ st.header("G-Point 履歴 2021\n")
 tab1, tab2 = st.tabs(["user", "club"])
 
 with tab1:
-    df_history = load_data("C:\\Users\\ThinkPad\\Desktop\\user_data\\2021\\"+id_selected+".json")
-                            http://172.16.2.252:8501
+    df_history = load_data("/2021"+id_selected+".json")
     st.subheader("ポイントの推移")
     fig = px.line(df_history, x='time', y='point', hover_name='stay', markers=True)
     st.write(fig)
