@@ -59,7 +59,7 @@ with tab1:
     st.write(fig)
     left_column, right_column = st.columns([2,1])
     left_column.subheader('ログ')
-    right_column.subheader('景品の引き換え')
+    right_column.subheader('景品引き換え')
     with left_column:
         st.dataframe(df_history,height=150)
     with right_column:
