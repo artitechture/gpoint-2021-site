@@ -22,7 +22,7 @@ def load_jsons(ids):
             point_dfs.append(json_loaded["point"])
             club_data.append(list(json_loaded["stay"].values()))
     
-    point_dataframe = pd.DataFrame(data=dict(id=[i[-11:].replace(".json","") for i in ids], point=point_dfs))
+    point_dataframe = pd.DataFrame(data=dict(id=[i[28:].replace(".json","") for i in ids], point=point_dfs))
     club_data = collections.Counter(itertools.chain.from_iterable(club_data))
     club_data = pd.DataFrame(data=dict(name=list(club_data.keys()), counts=list(club_data.values())))
     club_data.drop(0,inplace=True)
@@ -39,8 +39,8 @@ def load_data(id_selected):
     df_history["time"] = df_history["time"].apply(lambda x: dt.strptime("2021/"+x, r"%Y/%m/%d %H:%M:%S"))
     return df_history
 
-id_list = glob.glob(r"../2021/*.json")
-id_list_names = [i[-11:].replace(".json","") for i in id_list]
+id_list = glob.glob(r"/app/gpoint-2021-site/2021/*.json")
+id_list_names = [i[28:].replace(".json","") for i in id_list]
 
 st.sidebar.write("### ID")
 id_selected = st.sidebar.selectbox(' ', id_list_names)
