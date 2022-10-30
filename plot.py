@@ -53,7 +53,7 @@ st.header("G-Point 履歴 2021\n")
 tab1, tab2 = st.tabs(["user", "club"])
 
 with tab1:
-    df_history = load_data("/2021/"+id_selected+".json")
+    df_history = load_data("/app/gpoint-2021-site/2021/"+id_selected+".json")
     st.subheader("ポイントの推移")
     fig = px.line(df_history, x='time', y='point', hover_name='stay', markers=True)
     st.write(fig)
