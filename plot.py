@@ -39,7 +39,7 @@ def load_data(id_selected):
     df_history["time"] = df_history["time"].apply(lambda x: dt.strptime("2021/"+x, r"%Y/%m/%d %H:%M:%S"))
     return df_history
 
-id_list = glob.glob(r".\2021\*.json")
+id_list = glob.glob(r"../2021/*.json")
 id_list_names = [i[-11:].replace(".json","") for i in id_list]
 
 st.sidebar.write("### ID")
