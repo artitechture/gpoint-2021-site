@@ -56,6 +56,7 @@ tab1, tab2 = st.tabs(["user", "club"])
 
 with tab1:
     df_history = load_data("C:\\Users\\ThinkPad\\Desktop\\user_data\\2021\\"+id_selected+".json")
+                            http://172.16.2.252:8501
     st.subheader("ポイントの推移")
     fig = px.line(df_history, x='time', y='point', hover_name='stay', markers=True)
     st.write(fig)
