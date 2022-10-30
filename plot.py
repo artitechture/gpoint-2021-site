@@ -57,7 +57,7 @@ with tab1:
     st.subheader("ポイントの推移")
     fig = px.line(df_history, x='time', y='point', hover_name='stay', markers=True)
     st.write(fig)
-    left_column, right_column = st.columns(2)
+    left_column, right_column = st.columns([2,1])
     left_column.subheader('ログ')
     right_column.subheader('景品の引き換え')
     with left_column:
